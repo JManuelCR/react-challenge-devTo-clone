@@ -1,8 +1,6 @@
 <h1 align="center"> 🚀⚛️ React challenge: Devto clone ⌨️💻</h1>
-<div style="background-image: url('https://interacso.com/blog/wp-content/uploads/2019/05/reactluminoso.png'); width: 100%; height: 200px; background-size: contain; background-repeat: no-repeat;">
-<!-- <img alt="React header image" style="width: 100%; heigth: auto;" src="https://interacso.com/blog/wp-content/uploads/2019/05/reactluminoso.png">    -->
-</div>
-<div style="display: flex; justify-content: align-items: center; center; padding: 8px 16px">
+<img alt="React header image" style="width: 100%; heigth: auto;" src="https://interacso.com/blog/wp-content/uploads/2019/05/reactluminoso.png">   
+<div style="display: flex; justify-content: align-items: center; center; padding: 8px 16px; gap: 4px;">
 <a href="https://legacy.reactjs.org/">
 <img alt="Static Badge" src="https://img.shields.io/badge/GitHub-v%2018.2.0-gray?logo=react&logoColor=white&label=React&labelColor=%2361DAFB">
 </a>
