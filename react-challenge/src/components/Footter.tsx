@@ -16,34 +16,40 @@ export default function Footter() {
   const secondList = ["Code of Conduct", "Privacy Policy", "Terms of use"];
 
   return (
-    <footer className="p-[48px] bg-[#e5e5e5]">
+    <footer className="p-[48px] bg-[#e5e5e5] w-full">
       <div className="flex flex-col justify-center text-center gap-2">
         <p className="text-[black] font-thin">
           <a className="text-[#3B49DF] font-normal" href="">DEV Community</a>— A constructive and inclusive social
           network for software developers. With you every step of your journey.
         </p>
-        <ul className="flex gap-3 justify-center">
-          {firstAnchorList.map((item, index) => {
+        <ul className="flex gap-4 justify-center flex-wrap">
+          {firstAnchorList.map((item, index, arr) => {
             return (
               <li 
               key={`item-first-list-${index}`}
               className="relative"
               >
-                <a className="text-6 text-[#3B49DF] font-light" href="">{item}</a>
-                <span className="text-6xl absolute">.</span>
+                <a className="text-6 text-[#3B49DF] font-light ps-1" href="">{item}</a>
+                { index === arr.length-1
+                        ? ""
+                        : <span className="text-5xl absolute text-[#575757] translate-y-[-50%] top-[-10%] ps-1 opacity-50%">.</span>
+                } 
               </li>
             );
           })}
         </ul>
-        <ul className="flex gap-3 justify-center">
-        {secondList.map((item, index) => {
+        <ul className="flex gap-4 justify-center flex-wrap">
+        {secondList.map((item, index, arr) => {
             return (
               <li 
               key={`item-first-list-${index}`}
               className="relative"
               >
-                <a className="text-6 text-[#3B49DF] font-light" href="">{item}</a>
-                <span className="text-6xl absolute">.</span>
+                <a className="text-6 text-[#3B49DF] font-light ps-1" href="">{item}</a>
+                {  index === arr.length-1
+                        ? ""
+                        : <span className="text-5xl absolute text-[#575757] translate-y-[-50%] top-[-10%] ps-1">.</span>
+                } 
               </li>
             );
           })}
