@@ -84,7 +84,7 @@ In this repository, It has been implemented a full-stack web application that cl
 To run the DEV-TO clone on your local machine, follow these steps:
 
 - Clone the repository: "git clone git@github.com:JManuelCR/react-challenge-devTo-clone.git"
-- Navigate to the repository: cd RetoReact
+- Navigate to the repository: cd react-challenge
 - Install dependencies for the client: npm install
 - Start the client and server concurrently: npm run dev
 - Open your browser and visit the localhost direction to see the DEV-TO clone.
