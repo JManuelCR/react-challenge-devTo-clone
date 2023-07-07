@@ -1,5 +1,5 @@
 <h1 align="center"> 🚀⚛️ React challenge: Devto clone ⌨️💻</h1>
-<div style="backgroud-image: url('https://interacso.com/blog/wp-content/uploads/2019/05/reactluminoso.png'); width: 100%; height: 200px; background-size: contain; background-repeat: no-repeat;">
+<div style="background-image: url('https://interacso.com/blog/wp-content/uploads/2019/05/reactluminoso.png'); width: 100%; height: 200px; background-size: contain; background-repeat: no-repeat;">
 <!-- <img alt="React header image" style="width: 100%; heigth: auto;" src="https://interacso.com/blog/wp-content/uploads/2019/05/reactluminoso.png">    -->
 </div>
 <div style="display: flex; justify-content: align-items: center; center; padding: 8px 16px">
