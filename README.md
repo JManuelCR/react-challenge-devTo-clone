@@ -83,7 +83,7 @@ In this repository, It has been implemented a full-stack web application that cl
 ## Getting Started
 To run the DEV-TO clone on your local machine, follow these steps:
 
-- Clone the repository: "git clone git@github.com:Paoox/RetoReact.git"
+- Clone the repository: "git@github.com:JManuelCR/react-challenge-devTo-clone.git"
 - Navigate to the repository: cd RetoReact
 - Install dependencies for the client: npm install
 - Start the client and server concurrently: npm run dev
@@ -92,6 +92,6 @@ To run the DEV-TO clone on your local machine, follow these steps:
 
 
 ## Collaboration
-If you would like to contribute to this project, please follow the guidelines outlined in [CONTRIBUTING.md.](https://github.com/Paoox/RetoReact/blob/develop/CONTRIBUTING.md) All contributions are welcome!
+If you would like to contribute to this project, please follow the guidelines outlined in [CONTRIBUTING.md.](https://github.com/JManuelCR/react-challenge-devTo-clone/blob/main/CONTRIBUTING.md) All contributions are welcome!
 ## License
 This project is licensed under kodemia license
