@@ -48,7 +48,7 @@ export default function Footter() {
                 <a className="text-6 text-[#3B49DF] font-light ps-1" href="">{item}</a>
                 {  index === arr.length-1
                         ? ""
-                        : <span className="text-5xl absolute text-[#575757] translate-y-[-50%] top-[-10%] ps-1">.</span>
+                        : <span className="text-5xl absolute text-[#575757] translate-y-[-50%] ps-1">.</span>
                 } 
               </li>
             );
