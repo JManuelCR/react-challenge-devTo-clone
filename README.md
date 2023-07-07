@@ -1,8 +1,6 @@
 <h1 align="center"> 🚀⚛️ React challenge: Devto clone ⌨️💻</h1>
-<div style="backgroud-image: url('https://interacso.com/blog/wp-content/uploads/2019/05/reactluminoso.png'); width: 100%; height: 200px; background-size: contain; background-repeat: no-repeat;">
-<!-- <img alt="React header image" style="width: 100%; heigth: auto;" src="https://interacso.com/blog/wp-content/uploads/2019/05/reactluminoso.png">    -->
-</div>
-<div style="display: flex; justify-content: align-items: center; center; padding: 8px 16px">
+<img alt="React header image" style="width: 100%; heigth: auto;" src="https://interacso.com/blog/wp-content/uploads/2019/05/reactluminoso.png">   
+<div style="display: flex; justify-content: align-items: center; center; padding: 8px 16px; gap: 8px;">
 <a href="https://legacy.reactjs.org/">
 <img alt="Static Badge" src="https://img.shields.io/badge/GitHub-v%2018.2.0-gray?logo=react&logoColor=white&label=React&labelColor=%2361DAFB">
 </a>
@@ -85,8 +83,8 @@ In this repository, It has been implemented a full-stack web application that cl
 ## Getting Started
 To run the DEV-TO clone on your local machine, follow these steps:
 
-- Clone the repository: "git clone git@github.com:Paoox/RetoReact.git"
-- Navigate to the repository: cd RetoReact
+- Clone the repository: "git clone git@github.com:JManuelCR/react-challenge-devTo-clone.git"
+- Navigate to the repository: cd react-challenge
 - Install dependencies for the client: npm install
 - Start the client and server concurrently: npm run dev
 - Open your browser and visit the localhost direction to see the DEV-TO clone.
@@ -94,6 +92,6 @@ To run the DEV-TO clone on your local machine, follow these steps:
 
 
 ## Collaboration
-If you would like to contribute to this project, please follow the guidelines outlined in [CONTRIBUTING.md.](https://github.com/Paoox/RetoReact/blob/develop/CONTRIBUTING.md) All contributions are welcome!
+If you would like to contribute to this project, please follow the guidelines outlined in [CONTRIBUTING.md.](https://github.com/JManuelCR/react-challenge-devTo-clone/blob/main/CONTRIBUTING.md) All contributions are welcome!
 ## License
 This project is licensed under kodemia license
