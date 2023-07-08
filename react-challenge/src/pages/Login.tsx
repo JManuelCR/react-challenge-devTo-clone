@@ -1,10 +1,12 @@
 import { buttonsLogin } from "../data/buttonsLogin";
 import LoginButtonNetwork from "../components/LoginButtonNetwork";
 import Footer from "../components/Footter";
+import Navbar from "../components/Navbar";
 
 export default function Login() {
   return (
     <>
+    <Navbar />
       <main className="w-full flex justify-center py-6 ">
         <section className="w-[640px] p-[48px] bg-[#fff] flex flex-col justify-center max-w-screen-md">
           <div className="flex justify-center flex-col px-8">
@@ -56,7 +58,7 @@ export default function Login() {
                 type="checkbox"
                 value="1"
                 name="rememberme"
-                className="w-[18px] h-[18px] rounded-md border-2 border-gay-900 cursor-pointer appearance-none checked:bg-blue-500 checked:text-red"
+                className="appearance-none w-[18px] h-[18px] rounded-md border-2 border-gay-900 cursor-pointer  default-text-[#fff] checked:text-red checked:bg-blue-500"
               />
               <label className="text-[#171717]" htmlFor="rememberme">
                 Remenber me
