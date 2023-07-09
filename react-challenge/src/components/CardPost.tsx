@@ -56,7 +56,7 @@ export default function CardPost(props: Props) {
   const time = props.timeToRead;
 
   return (
-    <article className="bg-[#fff] mb-2 rounded-b-md">
+    <article className="bg-[#fff] mb-2 rounded-b-md w-full">
       <a className="w-full h-[208px]" href="">
         <div className="w-full h-[208px] rounded-t-md">
           <img
