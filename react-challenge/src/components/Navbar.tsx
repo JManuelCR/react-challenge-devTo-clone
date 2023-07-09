@@ -6,7 +6,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="w-full h-[56px] bg-[#fff] flex items-center">
-        <div className="md:mx-[10px] lg:mx-auto max-w-[1200px] w-full flex items-center justify-between">
+        <div className="md:mx-[10px] px-4 lg:mx-auto max-w-[1200px] w-full flex items-center justify-between">
           <div className=" flex items-center ">
             <span className="leading-6 block leading-6">
               <button

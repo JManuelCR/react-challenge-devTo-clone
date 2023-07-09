@@ -7,7 +7,7 @@ export default function Login() {
   return (
     <>
     <Navbar />
-      <main className="w-full flex justify-center py-6 ">
+      <main className="w-full flex justify-center py-6 min-h-screen">
         <section className="w-[640px] p-[48px] bg-[#fff] flex flex-col justify-center max-w-screen-md">
           <div className="flex justify-center flex-col px-8">
             <h1 className="text-black font-bold text-3xl text-center">
