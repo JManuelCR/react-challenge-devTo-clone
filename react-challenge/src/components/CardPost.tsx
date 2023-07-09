@@ -56,15 +56,20 @@ export default function CardPost(props: Props) {
   const time = props.timeToRead;
 
   return (
-    <article className="bg-[#fff] mb-2 rounded-b-md w-full">
+    <article className="bg-[#fff] mb-2 rounded-md w-full">
       <a className="w-full h-[208px]" href="">
-        <div className="w-full h-[208px] rounded-t-md">
-          <img
-            className="w-full h-full object-cover rounded-t-md"
-            src={image}
-            alt="Card image"
-          />
-        </div>
+        { image 
+        ? (<div className="w-full h-[208px] rounded-t-md">
+        <img
+          className="w-full h-full object-cover rounded-t-md"
+          src={image}
+          alt="Card image"
+        />
+      </div>) : (<div className="w-full">
+
+        </div>) 
+      }
+  
         <div className="w-full p-[20px]">
           <div className="mb-2 flex items-center gap-3">
             <span className="">
