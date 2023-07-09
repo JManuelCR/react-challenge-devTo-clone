@@ -52,12 +52,12 @@ export default function AsideLeft() {
         <div className="flex flex-col">
               <span className="block leading-6 px-4 py-2 me-2 relative text-[#404040] text-8 font-normal hidden md:block">
               <a
-                className="text-[#3B49E9] flex justify-center mb-1 relative py-[7px] px-[15px] text-8 font-normal border-[#3B49E9] border-[1px] rounded"
+                className="text-[#3B49E9] flex justify-center mb-1 relative py-[7px] px-[15px] text-8 md:text-[12px] font-normal border-[#3B49E9] border-[1px] rounded"
                 href=""
               >
                 Create account
               </a>
-                <a className="flex justify-center relative py-[7px] px-[15px] text-8 font-normal" href="">Log in</a>
+                <a className="flex justify-center relative py-[7px] px-[15px] text-8 md:text-[12px] font-normal" href="">Log in</a>
               </span>
             </div>
       </article>
