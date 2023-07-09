@@ -3,6 +3,7 @@ import Footter from "../components/Footter";
 import AsideLeft from "../components/AsideLeft";
 import CardPost from "../components/CardPost";
 import {Props as ContentInfo} from "../components/CardPost"
+import AsideRight from "../components/AsideRight";
 
 const cards:ContentInfo [] = [
     {
@@ -65,6 +66,21 @@ const cards:ContentInfo [] = [
         reactions: 10,
         timeToRead: 25,
     },
+    {
+        cardImg: '',
+        userName: 'Mitchell Mutandah',
+        userImg:'https://res.cloudinary.com/practicaldev/image/fetch/s--UdYvUw26--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/766802/f995f1c4-5812-4a16-8382-3c38f2208269.jpeg',
+        cardTitle: "Is the AI Hype Over? OpenAI's ChatGPT Code Interpreter Takes Center Stage",
+        date: new Date,
+        tags: [
+            'devto',
+            'devto',
+            'devto',
+        ],
+        comments: 5,
+        reactions: 10,
+        timeToRead: 25,
+    },
 ]
 export default function Home() {
   return (
@@ -101,7 +117,9 @@ export default function Home() {
                 })
             }
         </section>
-        <aside className="hidde lg:block w-0 lg:w-1/4"></aside>
+        <aside className="hidden lg:block w-0 lg:w-1/4">
+         <AsideRight />
+        </aside>
       </main>
       <Footter />
     </>
