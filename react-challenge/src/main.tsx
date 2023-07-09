@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Login from './pages/Login'
 import Home from './pages/Home'
+import SignUp from './pages/SignUp'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './index.scss'
 
@@ -16,11 +17,11 @@ const router =  createBrowserRouter([
     element: <Login />,
     // errorElement: <NotFoundPages />,
   },
-  // {
-  //   path: '/register',
-  //   element: <Register />,
-  //   errorElement: <NotFoundPages />,
-  // },
+  {
+    path: '/signup',
+    element: <SignUp />,
+    // errorElement: <NotFoundPages />,
+  },
   // {
   //   path: '/post',
   //   element: <Post />,
