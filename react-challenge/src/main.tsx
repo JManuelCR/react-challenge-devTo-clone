@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import SignUp from './pages/SignUp'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './index.scss'
+import CeratePost from './pages/CreatePost'
 
 const router =  createBrowserRouter([
   {
@@ -22,11 +23,11 @@ const router =  createBrowserRouter([
     element: <SignUp />,
     // errorElement: <NotFoundPages />,
   },
-  // {
-  //   path: '/post',
-  //   element: <Post />,
-  //   errorElement: <NotFoundPages />
-  // },
+  {
+    path: '/create',
+    element: <CeratePost />,
+    // errorElement: <NotFoundPages />
+  },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

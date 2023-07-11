@@ -44,7 +44,7 @@ export default function SignUp() {
             </label>
             <input
               className="border-slate-400 h-12 border rounded-md bg-[#fff]"
-              type="email"
+              type="text"
               placeholder="User name"
             />
             <label className="font-normal text-md text-[#171717]" htmlFor="">
@@ -52,7 +52,7 @@ export default function SignUp() {
             </label>
             <input
               className="border-slate-400 h-12 border rounded-md bg-[#fff]"
-              type="email"
+              type="text"
               placeholder="Url user img"
             />
             <label className="font-normal text-md text-[#171717]" htmlFor="">

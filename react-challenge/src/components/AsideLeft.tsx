@@ -2,6 +2,7 @@ import AsideLeftCard from "./AsideLeftCard";
 import { leftCards } from "../data/leftcards";
 import { assideOptions } from "../data/assideLeftOptions";
 import { logos } from "../data/networklogos";
+import { Link } from "react-router-dom";
 export interface Props {
   icon: string;
   option: string;
@@ -35,32 +36,48 @@ const tagslist: Tags[] = [
 ];
 
 export default function AsideLeft() {
+  const token:string | null = localStorage.getItem('token')
+
   return (
     <>
+    { token
+    ? <div></div>
+    : (
       <article className="w-full p-3 pb-4 rounded-md bg-[white] max-h-[1082px] mb-3">
-        <div className="mb-[10px]">
-          <h2 className="block text-2xl text-[#404040] font-bold">
-            DEV Community is a community of 1,097,995 amazing developers
-          </h2>
-        </div>
-        <div className="">
-          <p>
-            We're a place where coders share, stay up-to-date and grow their
-            careers.
-          </p>
-        </div>
-        <div className="flex flex-col">
-              <span className="block leading-6 px-4 py-2 me-2 relative text-[#404040] text-8 font-normal hidden md:block">
-              <a
-                className="text-[#3B49E9] flex justify-center mb-1 relative py-[7px] px-[15px] text-8 md:text-[12px] font-normal border-[#3B49E9] border-[1px] rounded"
-                href=""
-              >
-                Create account
-              </a>
-                <a className="flex justify-center relative py-[7px] px-[15px] text-8 md:text-[12px] font-normal" href="">Log in</a>
-              </span>
-            </div>
-      </article>
+      <div className="mb-[10px]">
+        <h2 className="block text-2xl text-[#404040] font-bold">
+          DEV Community is a community of 1,097,995 amazing developers
+        </h2>
+      </div>
+      <div className="">
+        <p>
+          We're a place where coders share, stay up-to-date and grow their
+          careers.
+        </p>
+      </div>
+      <div className="flex flex-col">
+        <span className="block leading-6 px-4 py-2 me-2 relative text-[#404040] text-8 font-normal hidden md:block">
+          <Link to={"/signup"}>
+            <a
+              className="text-[#3B49E9] flex justify-center mb-1 relative py-[7px] px-[15px] text-8 md:text-[12px] font-normal border-[#3B49E9] border-[1px] rounded"
+              href=""
+            >
+              Create account
+            </a>
+          </Link>
+          <Link to={"/login"}>
+            <a
+              className="flex justify-center relative py-[7px] px-[15px] text-8 md:text-[12px] font-normal"
+              href=""
+            >
+              Log in
+            </a>
+          </Link>
+        </span>
+      </div>
+    </article>)
+    }
+     
       <ul>
         {assideOptions
           .filter((item, index, arr) => index < 13)
@@ -125,7 +142,7 @@ export default function AsideLeft() {
       </div>
       <nav className="mb-6">
         <h3 className="p-2 text-4 font-bold text-[#404040]">Popular Tags</h3>
-        <div className="flex flex-col overflow-scroll max-h-[328px]">
+        <div className="flex flex-col  overflow-y-scroll max-h-[328px] scrollableContent">
           {tagslist.map((tag, index) => {
             return (
               <span key={`tag-${index}`} className="w-full">

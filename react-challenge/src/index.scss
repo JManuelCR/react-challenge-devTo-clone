@@ -16,3 +16,10 @@ html, body {
 .specialFont{
   font-family: 'Alfa Slab One', cursive;
 }
+.scrollableContent::-webkit-scrollbar {
+  width: 3px;
+}
+.scrollableContent::-webkit-scrollbar-thumb {
+  background-color: #a1a0a0;
+  border-radius: 5px;
+}

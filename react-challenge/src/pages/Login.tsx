@@ -1,7 +1,8 @@
 import { buttonsLogin } from "../data/buttonsLogin";
+import { Link } from "react-router-dom";
 import LoginButtonNetwork from "../components/LoginButtonNetwork";
 import Footer from "../components/Footter";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar";  
 
 export default function Login() {
   return (
