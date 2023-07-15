@@ -36,11 +36,11 @@ export default function Navbar() {
                   <div className="flex flex-row flex-wrap">
                     <div
                       className="flex flex-col flex-nowrap relative shrink grow text-gray-700"
-                      placeholder="Search..."
                     >
                       <input
-                        className="bg-[#000] rounded py-[6.5px] px-[8px] w-[420px] resize-y bg-[white]"
+                        className="bg-[#000] rounded py-[6.5px] px-[8px] w-[380px] lg:w-[420px] resize-y bg-[white]"
                         type="text"
+                        placeholder="Search..."
                       />
                       <button className="left-[380px] right-[1px] top-[5px] absolute">
                         <img

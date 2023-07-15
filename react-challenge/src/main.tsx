@@ -6,6 +6,7 @@ import SignUp from './pages/SignUp'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './index.scss'
 import CeratePost from './pages/CreatePost'
+import Post from './pages/Post'
 
 const router =  createBrowserRouter([
   {
@@ -26,6 +27,11 @@ const router =  createBrowserRouter([
   {
     path: '/create',
     element: <CeratePost />,
+    // errorElement: <NotFoundPages />
+  },
+  {
+    path: '/post',
+    element: <Post />,
     // errorElement: <NotFoundPages />
   },
 ])

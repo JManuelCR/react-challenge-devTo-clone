@@ -93,7 +93,7 @@ export default function Home() {
         <section className="w-full md:w-3/4 lg:w-1/2">
           <nav className="flex justify-between">
             <ul className="flex flex-nowrap py-1">
-              <a className="py-2 px-4 text-[18px] text-[#575757] cursor-pointer" href="">Relevant</a>
+              <a className="py-2 px-4 text-[18px] text-[#121212] font-bold cursor-pointer" href="">Relevant</a>
               <a className="py-2 px-4 text-[18px] text-[#575757] cursor-pointer" href="">Latest</a>
               <a className="py-2 px-4 text-[18px] text-[#575757] cursor-pointer" href="">Top</a>
             </ul>
