@@ -1,10 +1,9 @@
-import { buttonsLogin } from "../data/buttonsLogin";
-import { Link } from "react-router-dom";
+import { buttonsSignUp } from "../data/buttonsSignUp";
 import LoginButtonNetwork from "../components/LoginButtonNetwork";
 import Footer from "../components/Footter";
-import Navbar from "../components/Navbar";  
+import Navbar from "../components/Navbar";
 
-export default function Login() {
+export default function SignUp() {
   return (
     <>
     <Navbar />
@@ -19,7 +18,7 @@ export default function Login() {
             </p>
           </div>
           <div className="flex flex-col gap-4">
-            {buttonsLogin.map((button, index) => {
+            {buttonsSignUp.map((button, index) => {
               return (
                 <LoginButtonNetwork
                   key={`button-${index}`}
@@ -34,44 +33,58 @@ export default function Login() {
             <div className="flex justify-cente items-canter pt-4 text-lg h-16 w-full">
               <span className="w-full block bg-gray-200 h-0.5"></span>
             </div>
-            <span className="absolute bg-[#fff] top-1 px-3">
-              Have a password? Continue with your email address
+            <span className="absolute bg-[#fff] top-1 px-3 flex gap-1">              
+            Already have an account? 
+            <a href="" className="text-[#3B49DF]">Log in.</a>
             </span>
           </div>
           <form action="submit" className="flex flex-col gap-3">
             <label className="font-normal text-md text-[#171717]" htmlFor="">
-              Email
+              User name:
+            </label>
+            <input
+              className="border-slate-400 h-12 border rounded-md bg-[#fff]"
+              type="text"
+              placeholder="User name"
+            />
+            <label className="font-normal text-md text-[#171717]" htmlFor="">
+              User profile image:
+            </label>
+            <input
+              className="border-slate-400 h-12 border rounded-md bg-[#fff]"
+              type="text"
+              placeholder="Url user img"
+            />
+            <label className="font-normal text-md text-[#171717]" htmlFor="">
+              Email:
             </label>
             <input
               className="border-slate-400 h-12 border rounded-md bg-[#fff]"
               type="email"
+              placeholder="useremail@mail.com"
             />
             <label className="font-normal text-md text-[#171717]" htmlFor="">
               {" "}
-              Password
+              Password:
             </label>
             <input
               className="border-slate-400 h-12 border rounded-md bg-[#fff]"
               type="password"
+              placeholder="password"
             />
-            <div className="flex gap-2 hover:bg-[] flex items-center py-3">
-              <input
-                type="checkbox"
-                value="1"
-                name="rememberme"
-                className="appearance-none w-[18px] h-[18px] rounded-md border-2 border-gay-900 cursor-pointer  default-text-[#fff] checked:text-red checked:bg-blue-500"
-              />
-              <label className="text-[#171717]" htmlFor="rememberme">
-                Remenber me
-              </label>
-            </div>
+            <label className="font-normal text-md text-[#171717]" htmlFor="">
+              {" "}
+              Confirm password:
+            </label>
+            <input
+              className="border-slate-400 h-12 border rounded-md bg-[#fff]"
+              type="password"
+              placeholder="password"
+            />
             <div className="bg-[#3B49DF] text-[#fff] h-12 flex items-center justify-center font-semibold rounded cursor-pointer">
-              <input type="submit" value="Continue" />
+              <input type="submit" value="Register" />
             </div>
           </form>
-          <p className="text-center pt-[24px]">
-            <a className="text-[#3B49E9] text-center" href=""> I forgot my password</a>
-          </p>
         </section>
       </main>
       <Footer/>

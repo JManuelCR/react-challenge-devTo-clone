@@ -5,6 +5,7 @@ import hands from "../assets/icons/raise-.svg";
 import fire from "../assets/icons/fire-Icon.svg";
 import commentsIcon from "../assets/icons/comments-count.svg";
 import mark from "../assets/icons/save-No-Background-Icon.svg";
+import { Link } from "react-router-dom";
 
 interface Icons {
   icon: string;
@@ -57,6 +58,7 @@ export default function CardPost(props: Props) {
 
   return (
     <article className="bg-[#fff] mb-2 rounded-md w-full">
+      <Link to={"/Post"}></Link>
       <a className="w-full h-[208px]" href="">
         { image 
         ? (<div className="w-full h-[208px] rounded-t-md">

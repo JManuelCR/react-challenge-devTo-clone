@@ -1,6 +1,7 @@
 import devtoIcon from "../assets/img/devto-icon.png";
 import searchLoupe from "../assets/icons/loupe-Icon.svg";
 import burguer from "../assets/icons/burger-Menu-Icon.svg";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -35,11 +36,11 @@ export default function Navbar() {
                   <div className="flex flex-row flex-wrap">
                     <div
                       className="flex flex-col flex-nowrap relative shrink grow text-gray-700"
-                      placeholder="Search..."
                     >
                       <input
-                        className="bg-[#000] rounded py-[6.5px] px-[8px] w-[420px] resize-y bg-[white]"
+                        className="bg-[#000] rounded py-[6.5px] px-[8px] w-[380px] lg:w-[420px] resize-y bg-[white]"
                         type="text"
+                        placeholder="Search..."
                       />
                       <button className="left-[380px] right-[1px] top-[5px] absolute">
                         <img
@@ -63,15 +64,19 @@ export default function Navbar() {
               />
             </a>
             <div className="flex">
-              <span className="block leading-6 px-4 py-2 me-2 relative text-[#404040] text-8 font-normal hidden md:block">
-                <a href="">Log in</a>
-              </span>
+              <Link to={"/login"}>
+                <span className="block leading-6 px-4 py-2 me-2 relative text-[#404040] text-8 font-normal hidden md:block">
+                  <a href="">Log in</a>
+                </span>
+              </Link>
+              <Link to={"/signup"}>
               <a
                 className="text-[#3B49E9] relative flex py-[7px] px-[15px] text-8 font-normal border-[#3B49E9] border-[0.65px]"
                 href=""
               >
                 Create account
               </a>
+              </Link>
             </div>
           </div>
           {/* <div className="flex-none">
