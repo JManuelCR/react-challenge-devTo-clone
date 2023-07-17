@@ -2,91 +2,59 @@ import Navbar from "../components/Navbar";
 import Footter from "../components/Footter";
 import AsideLeft from "../components/AsideLeft";
 import CardPost from "../components/CardPost";
-import {Props as ContentInfo} from "../components/CardPost"
+import { Props as ContentInfo } from "../components/CardPost"
 import AsideRight from "../components/AsideRight";
-
+import { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+export let postData ={}
 const cards:ContentInfo [] = [
     {
-        cardImg: 'https://res.cloudinary.com/practicaldev/image/fetch/s--F8vXLM34--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8i3shhdfjhswxr3dmfyb.jpeg',
-        userName: 'Mitchell Mutandah',
-        userImg:'https://res.cloudinary.com/practicaldev/image/fetch/s--UdYvUw26--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/766802/f995f1c4-5812-4a16-8382-3c38f2208269.jpeg',
-        cardTitle: "Is the AI Hype Over? OpenAI's ChatGPT Code Interpreter Takes Center Stage",
+        image: 'https://res.cloudinary.com/practicaldev/image/fetch/s--F8vXLM34--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8i3shhdfjhswxr3dmfyb.jpeg',
         date: new Date,
+        title: "Is the AI Hype Over? OpenAI's ChatGPT Code Interpreter Takes Center Stage",
         tags: [
             'devto',
             'devto',
             'devto',
-        ],
+            'devto',
+            'devto',
+            'devto',
+          ],
+          heartReactions: 10,
+          marks: 2,
         comments: 5,
-        reactions: 10,
-        timeToRead: 25,
-    },
-    {
-        cardImg: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxzvwxIDcguFqEhJTwYvnJ2kts6U0viAjU6bUV-PsRKjEhTu3pdDRheUOdOR2_pD8e38o&usqp=CAU',
-        userName: 'Mitchell Mutandah',
-        userImg:'https://res.cloudinary.com/practicaldev/image/fetch/s--UdYvUw26--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/766802/f995f1c4-5812-4a16-8382-3c38f2208269.jpeg',
-        cardTitle: "Is the AI Hype Over? OpenAI's ChatGPT Code Interpreter Takes Center Stage",
-        date: new Date,
-        tags: [
-            'devto',
-            'devto',
-            'devto',
-        ],
-        comments: 5,
-        reactions: 10,
-        timeToRead: 25,
-    },
-    {
-        cardImg: 'https://www.shutterstock.com/shutterstock/photos/1862937556/display_1500/stock-photo-triangle-solid-black-golden-illustration-abstract-hd-download-1862937556.jpg',
-        userName: 'Mitchell Mutandah',
-        userImg:'https://res.cloudinary.com/practicaldev/image/fetch/s--UdYvUw26--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/766802/f995f1c4-5812-4a16-8382-3c38f2208269.jpeg',
-        cardTitle: "Is the AI Hype Over? OpenAI's ChatGPT Code Interpreter Takes Center Stage",
-        date: new Date,
-        tags: [
-            'devto',
-            'devto',
-            'devto',
-        ],
-        comments: 5,
-        reactions: 10,
-        timeToRead: 25,
-    },
-    {
-        cardImg: 'https://www.tesla.com/xNVh4yUEc3B9/04_Desktop.jpg',
-        userName: 'Mitchell Mutandah',
-        userImg:'https://res.cloudinary.com/practicaldev/image/fetch/s--UdYvUw26--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/766802/f995f1c4-5812-4a16-8382-3c38f2208269.jpeg',
-        cardTitle: "Is the AI Hype Over? OpenAI's ChatGPT Code Interpreter Takes Center Stage",
-        date: new Date,
-        tags: [
-            'devto',
-            'devto',
-            'devto',
-        ],
-        comments: 5,
-        reactions: 10,
-        timeToRead: 25,
-    },
-    {
-        cardImg: '',
-        userName: 'Mitchell Mutandah',
-        userImg:'https://res.cloudinary.com/practicaldev/image/fetch/s--UdYvUw26--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/766802/f995f1c4-5812-4a16-8382-3c38f2208269.jpeg',
-        cardTitle: "Is the AI Hype Over? OpenAI's ChatGPT Code Interpreter Takes Center Stage",
-        date: new Date,
-        tags: [
-            'devto',
-            'devto',
-            'devto',
-        ],
-        comments: 5,
-        reactions: 10,
-        timeToRead: 25,
+        time: 25,
+        content: 'jkjsdñlkjflskjf',
+        userCreatorId: {
+          name: "manuel",
+          profilePicture:"https://avatars.githubusercontent.com/u/45635600?v=4",
+          _id: "asdfasfd"
+        },
+        _id:'kjsdañlfkj',
     },
 ]
 export default function Home() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/post")
+      .then((res) => res.json())
+      .then((res) => {
+        setPosts(res.data); 
+        postData = res.data;
+      })
+      .catch(() => {
+        toast.error("Error en el servidor");
+      });
+  }, []);
+
   return (
     <>
       <Navbar />
-      <main className="min-h-screen w-full flex gap-4 p-4">
+      <ToastContainer 
+      theme="dark"
+      />
+      <main className="min-h-screen max-w-[1280px] flex gap-4 p-4 mx-auto">
         <aside className="hidden md:block w-0 md:w-1/4">
           <AsideLeft />
         </aside>
@@ -99,20 +67,29 @@ export default function Home() {
             </ul>
           </nav>
             {
-                cards.map((card,index) => {
+                posts.map((card,index) => {
                     return (
                         <CardPost
                         key={`card-${index}`}
-                        cardImg={card.cardImg}
-                        userName={card.userName}
-                        userImg={card.userImg}
+                        image={card.image}
                         date={card.date}
-                        cardTitle={card.cardTitle}
+                        title={card.title}
                         comments={card.comments}
-                        reactions={card.comments}
+                        heartReactions={card.heartReactions}
+                        unicornReactions={card.unicornReactions}
+                        crazyReactions={card.crazyReactions}
+                        handsReactions={card.handsReactions}
+                        fireReactions={card.fireReactions}
+                        marks={card.marks}
                         tags={card.tags}
-                        timeToRead={card.timeToRead}
-                        />
+                        time={card.time} 
+                        content={card.content} 
+                        userCreatorId={{
+                          name: card.userCreatorId.name,
+                          profilePicture: card.userCreatorId.profilePicture,
+                          _id: card.userCreatorId._id, 
+                        }} 
+                        _id={card._id}                        />
                     )
                 })
             }

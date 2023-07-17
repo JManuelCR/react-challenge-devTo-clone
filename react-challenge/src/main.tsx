@@ -7,32 +7,35 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './index.scss'
 import CeratePost from './pages/CreatePost'
 import Post from './pages/Post'
+import NotFound from './pages/NotFound'
+
+
 
 const router =  createBrowserRouter([
   {
     path: '/',
     element: <Home />,
-    // errorElement: <NotFoundPages />,
+    errorElement: <NotFound />,
   },
   {
     path:'/login',
     element: <Login />,
-    // errorElement: <NotFoundPages />,
+    errorElement: <NotFound />,
   },
   {
     path: '/signup',
     element: <SignUp />,
-    // errorElement: <NotFoundPages />,
+    errorElement: <NotFound />,
   },
   {
     path: '/create',
     element: <CeratePost />,
-    // errorElement: <NotFoundPages />
+    errorElement: <NotFound />
   },
   {
     path: '/post',
     element: <Post />,
-    // errorElement: <NotFoundPages />
+    errorElement: <NotFound />
   },
 ])
 
