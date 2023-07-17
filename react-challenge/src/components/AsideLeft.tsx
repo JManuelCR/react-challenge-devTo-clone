@@ -1,8 +1,7 @@
 import AsideLeftCard from "./AsideLeftCard";
 import { leftCards } from "../data/leftcards";
-import { assideOptions } from "../data/assideLeftOptions";
-import { logos } from "../data/networklogos";
 import { Link } from "react-router-dom";
+import CanvaAsideLeft from "./CanvaAsideLeft";
 export interface Props {
   icon: string;
   option: string;
@@ -77,69 +76,7 @@ export default function AsideLeft() {
       </div>
     </article>)
     }
-     
-      <ul>
-        {assideOptions
-          .filter((item, index, arr) => index < 13)
-          .map((item, index) => {
-            return (
-              <a href="">
-                <li
-                  className="flex p-2 justify-start gap-2"
-                  key={`item-${index}`}
-                >
-                  <span className="w-6">
-                    <img
-                      className="w-full h-auto"
-                      src={item.icon}
-                      alt="Option icon"
-                    />
-                  </span>
-                  <p className="text-4 font-normal text-[#404040]">
-                    {item.option}
-                  </p>
-                </li>
-              </a>
-            );
-          })}
-      </ul>
-      <nav className="mb-4">
-        <h2 className="font-bold text-[#404040] p-2 text-4 ps-3">Other</h2>
-        <ul>
-          {assideOptions
-            .filter((item, index, arr) => index > 12)
-            .map((item, index) => {
-              return (
-                <a href="">
-                  <li
-                    className="flex p-2 justify-start gap-2"
-                    key={`item-nav-${index}`}
-                  >
-                    <span className="w-6">
-                      <img
-                        className="w-full h-auto"
-                        src={item.icon}
-                        alt="Option icon"
-                      />
-                    </span>
-                    <p className="text-4 font-normal text-[#404040]">
-                      {item.option}
-                    </p>
-                  </li>
-                </a>
-              );
-            })}
-        </ul>
-      </nav>
-      <div className=" flex mb-4">
-        {logos.map((logo, index) => {
-          return (
-            <a key={`logo-${index}`} className="p-2" href="">
-              <img className="w-6 h-6" src={logo.icon} alt="" />
-            </a>
-          );
-        })}
-      </div>
+    <CanvaAsideLeft />
       <nav className="mb-6">
         <h3 className="p-2 text-4 font-bold text-[#404040]">Popular Tags</h3>
         <div className="flex flex-col  overflow-y-scroll max-h-[328px] scrollableContent">

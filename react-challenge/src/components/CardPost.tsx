@@ -7,7 +7,7 @@ import commentsIcon from "../assets/icons/comments-count.svg";
 import mark from "../assets/icons/save-No-Background-Icon.svg";
 import { Link } from "react-router-dom";
 
-interface Icons {
+export interface Icons {
   icon: string;
   alternative: string;
 }
@@ -35,30 +35,40 @@ const reactionsIcons: Icons[] = [
 ];
 
 export interface Props {
-  cardImg: string;
-  userImg: string;
-  userName: string;
+  image: string;
   date: Date;
-  cardTitle: string;
-  tags: [tag: string, tag: string, tag: string];
-  reactions: number;
+  title: string;
+  tags: [string];
+  heartReactions: number;
+  unicornReactions : number;
+  crazyReactions: number;
+  handsReactions: number;
+  fireReactions: number;
+  marks: number;
   comments: number;
-  timeToRead: number;
+  time: number;
+  content: string;
+  userCreatorId: {
+    name: string;
+    profilePicture: string;
+    _id: string;
+  };
+  _id: string;
 }
 export default function CardPost(props: Props) {
-  const image = props.cardImg;
-  const user = props.userName;
-  const userImg = props.userImg;
-  const creation = props.date;
-  const title = props.cardTitle;
+  const image = props.image;
+  const user = props.userCreatorId.name;
+  const userImg = props.userCreatorId.profilePicture;
+  const date = new Date(props.date)
+  const creation = date.toLocaleDateString('en-US',{month: 'short', day: '2-digit'});
+  const title = props.title;
   const tags = props.tags;
-  const reactions = props.reactions;
-  const comments = props.comments;
-  const time = props.timeToRead;
-
+  const reactions = props.heartReactions + props.unicornReactions + props.crazyReactions + props.handsReactions + props.fireReactions;
+  const comments = props.comments.length;
+  const time = props.time;
   return (
     <article className="bg-[#fff] mb-2 rounded-md w-full">
-      <Link to={"/Post"}></Link>
+      <Link to={`/post?id=${props._id}`}>
       <a className="w-full h-[208px]" href="">
         { image 
         ? (<div className="w-full h-[208px] rounded-t-md">
@@ -86,7 +96,7 @@ export default function CardPost(props: Props) {
                 {user}
               </h2>
               <time className="text-[12px] text-[#525252] leading-[15px] cursor-pointer">
-                Jul {creation.getMonth()}
+                { creation }
               </time>
             </div>
           </div>
@@ -157,6 +167,7 @@ export default function CardPost(props: Props) {
           </div>
         </div>
       </a>
+      </Link>
     </article>
   );
 }

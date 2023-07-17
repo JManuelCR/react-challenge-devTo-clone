@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import devtoIcon from "../assets/img/devto-icon.png";
 import { useState } from "react";
+
 
 export default function CeratePost() {
   const [clipboardText, setClipboardText] = useState("");
@@ -9,6 +11,7 @@ export default function CeratePost() {
     <form action="submit" className="px-4">
       <nav className="h-[56px] w-full flex items-center p-2">
         <span className="me-3">
+        <Link to={"/"}>
           <a href="">
             <img
               className="h-[40px] w-[50px] max-w-[100%]"
@@ -16,6 +19,7 @@ export default function CeratePost() {
               alt="Devto icon"
             />
           </a>
+        </Link>
         </span>
         <div className="flex items-center w-[75%] justify-between">
           <div className="flex items-center">
@@ -33,9 +37,11 @@ export default function CeratePost() {
           </nav>
         </div>
         <div className="w-[15%] flex justify-end items-center">
+          <Link to ="/">
           <button className="flex justify-center items-center w-6 h-6 text-[#171717] font-normal text-xl">
             X
           </button>
+          </Link>
         </div>
       </nav>
       <main className="min-h-screen flex w-full">

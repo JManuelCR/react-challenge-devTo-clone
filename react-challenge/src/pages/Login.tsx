@@ -2,12 +2,63 @@ import { buttonsLogin } from "../data/buttonsLogin";
 import { Link } from "react-router-dom";
 import LoginButtonNetwork from "../components/LoginButtonNetwork";
 import Footer from "../components/Footter";
-import Navbar from "../components/Navbar";  
+import Navbar from "../components/Navbar";
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { Login, User } from "../types/commont.types";
 
 export default function Login() {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<User>();
+  const navigate = useNavigate();
+
+  function onSubmit(data: Login) {
+    fetch("http://localhost:8080/auth", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: data.email,
+        password: data.password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res?.data) {
+          localStorage.setItem("token", res.data);
+          setTimeout(() =>{
+            window.location.href = '/'
+          },500)
+        } else {
+          toast.warn("Usuario no registrado");
+        }
+      })
+      .catch(() => {
+        toast.error(
+          "Usuarion no registrado, registrese como usuario para iniciar secion"
+        );
+      });
+  }
+
   return (
     <>
-    <Navbar />
+      <Navbar />
+      <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover={false}
+          theme="colored"
+        />
       <main className="w-full flex justify-center py-6 min-h-screen">
         <section className="w-[640px] p-[48px] bg-[#fff] flex flex-col justify-center max-w-screen-md">
           <div className="flex justify-center flex-col px-8">
@@ -38,21 +89,41 @@ export default function Login() {
               Have a password? Continue with your email address
             </span>
           </div>
-          <form action="submit" className="flex flex-col gap-3">
-            <label className="font-normal text-md text-[#171717]" htmlFor="">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            action="submit"
+            className="flex flex-col gap-3"
+          >
+            <label
+              className="font-normal text-md text-[#171717]"
+              htmlFor="email"
+            >
               Email
             </label>
             <input
+              id="email"
               className="border-slate-400 h-12 border rounded-md bg-[#fff]"
               type="email"
+              placeholder="User email"
+              {...register("email", {
+                required: true,
+              })}
             />
-            <label className="font-normal text-md text-[#171717]" htmlFor="">
+            <label
+              className="font-normal text-md text-[#171717]"
+              htmlFor="password"
+            >
               {" "}
               Password
             </label>
             <input
+              id="password"
               className="border-slate-400 h-12 border rounded-md bg-[#fff]"
-              type="password"
+              type="Password"
+              placeholder="password"
+              {...register("password", {
+                required: true,
+              })}
             />
             <div className="flex gap-2 hover:bg-[] flex items-center py-3">
               <input
@@ -66,15 +137,17 @@ export default function Login() {
               </label>
             </div>
             <div className="bg-[#3B49DF] text-[#fff] h-12 flex items-center justify-center font-semibold rounded cursor-pointer">
-              <input type="submit" value="Continue" />
+              <input type="submit" value="Continue" className="w-full h-full" />
             </div>
           </form>
           <p className="text-center pt-[24px]">
-            <a className="text-[#3B49E9] text-center" href=""> I forgot my password</a>
+            <a className="text-[#3B49E9] text-center" href="">
+              I forgot my password
+            </a>
           </p>
         </section>
       </main>
-      <Footer/>
+      <Footer />
     </>
   );
 }

@@ -1,9 +1,54 @@
 import devtoIcon from "../assets/img/devto-icon.png";
 import searchLoupe from "../assets/icons/loupe-Icon.svg";
+import notifications from "../assets/icons/belt-icon.svg";
 import burguer from "../assets/icons/burger-Menu-Icon.svg";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import CanvaAsideLeft from "./CanvaAsideLeft";
+import Close from "../assets/icons/x-Close-Icon.svg";
+
+const token = localStorage.getItem("token");
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [canvaIsOpen, setCanvaIsOpen] = useState(false);
+
+  function logOut() {
+    localStorage.removeItem("token");
+    window.location.href = "/";
+  }
+
+  function toggleDropdown() {
+    setIsOpen(!isOpen);
+  }
+
+  const toggleMenu = () => {
+    setCanvaIsOpen(!canvaIsOpen);
+    setTimeout(() => {
+      const element = document.getElementById('scrollable')
+      if(element){
+        console.log("estoy aca");
+        element.style.overflow = 'hidden'
+      }
+    }, 500);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: {
+      target: { closest: (arg0: string) => any };
+    }) => {
+      if (isOpen && !event.target.closest(".dropdown")) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
+
   return (
     <>
       <nav className="w-full h-[56px] bg-[#fff] flex items-center">
@@ -13,6 +58,7 @@ export default function Navbar() {
               <button
                 className="mx-2 p-2 relative inline-block md:hidden"
                 type="submit"
+                onClick={toggleMenu}
               >
                 <img
                   className="w-[24px] h-[24px]"
@@ -20,31 +66,47 @@ export default function Navbar() {
                   alt="Burguer menu icon"
                 />
               </button>
+              {canvaIsOpen && (
+                <div  className="max-h-screen w-full">
+                  <div id="scrollable" className="fixed inset-0 w-full max-h-screen top-0 left-0 bg-[#000] opacity-70"></div>
+                  <div className="absolute top-0 left-0 w-[75%] bg-[#fff] opacity-100 z-10 overflow-y-scroll p-4 min-h-screen">
+                    <div className="flex justify-between items-center ps-2 mb-4">
+                      <h2 className="text-[#303030] font-bold text-lg">
+                        DEV Community
+                      </h2>
+                      <a href="">
+                        <img className="w-5 h-5" src={Close} alt="" />
+                      </a>
+                    </div>
+                    <CanvaAsideLeft />
+                  </div>
+                </div>
+              )}
             </span>
             <div className="flex">
               <a className="normal-case text-xl block">
                 <span>
-                  <img
-                    className="h-[40px] w-[50px] max-w-[100%]"
-                    src={devtoIcon}
-                    alt="Devto-icon"
-                  />
+                  <Link to={"/"}>
+                    <img
+                      className="h-[40px] w-[50px] max-w-[100%]"
+                      src={devtoIcon}
+                      alt="Devto-icon"
+                    />
+                  </Link>
                 </span>
               </a>
               <div className="mx-4 hidden md:block">
                 <form action="submit">
                   <div className="flex flex-row flex-wrap">
-                    <div
-                      className="flex flex-col flex-nowrap relative shrink grow text-gray-700"
-                    >
+                    <div className="flex flex-col flex-nowrap relative shrink grow text-gray-700">
                       <input
                         className="bg-[#000] rounded py-[6.5px] px-[8px] w-[380px] lg:w-[420px] resize-y bg-[white]"
                         type="text"
                         placeholder="Search..."
                       />
-                      <button className="left-[380px] right-[1px] top-[5px] absolute">
+                      <button className="left-[92%] right-[0.5%] top-[22%] absolute">
                         <img
-                          className="w-[28px] h-[28px]"
+                          className="w-[24px] h-[24px]"
                           src={searchLoupe}
                           alt="search icon"
                         />
@@ -56,49 +118,119 @@ export default function Navbar() {
             </div>
           </div>
           <div className="flex items-center ms-[18px] lg:ms-259px lasContainerNav me-4 md:me-0">
-            <a className="md:hidden me-4" href="">
+            <a className="md:hidden me-2" href="">
               <img
                 className="w-[28px] h-[28px]"
                 src={searchLoupe}
                 alt="search icon"
               />
             </a>
-            <div className="flex">
-              <Link to={"/login"}>
-                <span className="block leading-6 px-4 py-2 me-2 relative text-[#404040] text-8 font-normal hidden md:block">
-                  <a href="">Log in</a>
-                </span>
-              </Link>
-              <Link to={"/signup"}>
-              <a
-                className="text-[#3B49E9] relative flex py-[7px] px-[15px] text-8 font-normal border-[#3B49E9] border-[0.65px]"
-                href=""
-              >
-                Create account
-              </a>
-              </Link>
-            </div>
+            {token ? (
+              <div className="flex items-center justify-center gap-3">
+                <Link to={"/create"}>
+                  <a
+                    className="text-[#3B49E9] relative hidden md:block flex py-[7px] px-[15px] text-8 font-normal border-[#3B49E9] border-[1px] rounded-md"
+                    href=""
+                  >
+                    Create post
+                  </a>
+                </Link>
+                <a href="">
+                  <img src={notifications} alt="" />
+                </a>
+                <div className="flex justify-center">
+                  <button className="" onClick={toggleDropdown}>
+                    <span className="">
+                      <img
+                        className="w-8 h-8 rounded-full"
+                        src="https://avatars.githubusercontent.com/u/45635600?v=4"
+                        alt="User profile image"
+                      />
+                    </span>
+                  </button>
+                  {isOpen && (
+                    <div className="dropdown absolute bg-[#fff] w-[97%] p-2 h-auto right-[8px] md:w-[250px] top-[40px] mt-2 rounded-md z-10">
+                      <ul className="">
+                        <li className="mb-2 pb-2 border-b-[#d6d6d6] border-b-[1px]">
+                          <a className="py-2 px-4 block" href="">
+                            <div className="w-full">
+                              <span className="text-[#404040] font-bold text-base">
+                                Manuel Cabrera
+                              </span>
+                              <span className=""></span>
+                            </div>
+                          </a>
+                        </li>
+                        <li className="">
+                          <a
+                            className="py-2 px-4 text-base block text-[#404040] font-[400]"
+                            href=""
+                          >
+                            Dashboard
+                          </a>
+                        </li>
+                        <li className="">
+                          <a
+                            className="py-2 px-4 text-base block text-[#404040] font-[400]"
+                            href=""
+                          >
+                            Create Post
+                          </a>
+                        </li>
+                        <li className="">
+                          <a
+                            className="py-2 px-4 text-base block text-[#404040] font-[400]"
+                            href=""
+                          >
+                            Reading list
+                          </a>
+                        </li>
+                        <li className="pb-2">
+                          <a
+                            className="py-2 px-4 text-base block text-[#404040] font-[400]"
+                            href=""
+                          >
+                            Settigns{" "}
+                          </a>
+                        </li>
+                        <li className="pt-2 border-t-[#d6d6d6] border-t-[1px]">
+                          <a
+                            className="py-2 px-4 text-base block text-[#404040] font-[400]"
+                            href="#"
+                            onClick={logOut}
+                          >
+                            Sing Up
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ) : (
+              <div></div>
+            )}
+            {!token ? (
+              <div className="flex ms-2">
+                <Link to={"/login"}>
+                  {}
+                  <span className="block leading-6 px-4 py-2 me-2 relative text-[#404040] text-8 font-normal hidden md:block">
+                    <a href="">Log in</a>
+                  </span>
+                </Link>
+                <Link to={"/signup"}>
+                  <a
+                    className="text-[#3B49E9] relative flex py-[7px] px-[15px] text-8 font-normal border-[#3B49E9] border-[0.65px]"
+                    href=""
+                  >
+                    Create account
+                  </a>
+                </Link>
+              </div>
+            ) : (
+              <div></div>
+            )}
           </div>
-          {/* <div className="flex-none">
-            <ul className="menu menu-horizontal px-1">
-              <li>
-                <a>Link</a>
-              </li>
-              <li>
-                <details>
-                  <summary>Parent</summary>
-                  <ul className="p-2 bg-base-100">
-                    <li>
-                      <a>Link 1</a>
-                    </li>
-                    <li>
-                      <a>Link 2</a>
-                    </li>
-                  </ul>
-                </details>
-              </li>
-            </ul>
-          </div> */}
         </div>
       </nav>
     </>

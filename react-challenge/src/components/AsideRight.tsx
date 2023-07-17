@@ -37,7 +37,7 @@ export default function AsideRight() {
           <h3 className="text-[#242424] text-[20px] font-bold">#discuss</h3>
         </header>
         <div className="">
-          {discussAndWhatercoller[0].discuss.map((item, index) => {
+          {discussAndWhatercoller[0].watercooler.map((item, index) => {
             return (
               <a
                 className="p-4 block border-b-[1px] border-b-[#F5F5F5]"
