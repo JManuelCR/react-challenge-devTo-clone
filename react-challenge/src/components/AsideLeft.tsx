@@ -58,7 +58,7 @@ export default function AsideLeft() {
         <span className="block leading-6 px-4 py-2 me-2 relative text-[#404040] text-8 font-normal hidden md:block">
           <Link to={"/signup"}>
             <a
-              className="text-[#3B49E9] flex justify-center mb-1 relative py-[7px] px-[15px] text-8 md:text-[12px] font-normal border-[#3B49E9] border-[1px] rounded"
+              className="text-[#3B49E9] flex justify-center mb-1 relative py-[7px] px-[15px] text-8 md:text-[12px] font-normal border-[#3B49E9] border-[1px] hover:bg-[#3B49E9] hover:text-[#fff] rounded-md"
               href=""
             >
               Create account
@@ -66,10 +66,11 @@ export default function AsideLeft() {
           </Link>
           <Link to={"/login"}>
             <a
-              className="flex justify-center relative py-[7px] px-[15px] text-8 md:text-[12px] font-normal"
+              className="flex justify-center relative py-[7px] px-[15px] text-8 md:text-[12px] font-normal hover:decoration-1 hover:text-blue-800 hover:underline"
               href=""
             >
               Log in
+              <span className="absolute inset-0 bg-[#3B49DF] opacity-0 hover:opacity-10 rounded-md"></span>
             </a>
           </Link>
         </span>
@@ -82,7 +83,8 @@ export default function AsideLeft() {
         <div className="flex flex-col  overflow-y-scroll max-h-[328px] scrollableContent">
           {tagslist.map((tag, index) => {
             return (
-              <span key={`tag-${index}`} className="w-full">
+              <span key={`tag-${index}`} className="w-full relative">
+                      <span className="absolute inset-0 bg-black opacity-0 hover:opacity-10 rounded"></span>
                 <a
                   className="py-2 px-4 text-4 text-[#404040] font-normal max-w-full block"
                   href=""

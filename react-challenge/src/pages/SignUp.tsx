@@ -5,7 +5,7 @@ import Footer from "../components/Footter";
 import Navbar from "../components/Navbar";
 import { User } from "../types/commont.types";
 import { ToastContainer, toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SignUp() {
   const {
@@ -42,7 +42,9 @@ export default function SignUp() {
   }
 
   function passwordInputAndConfirmMatch(value: string): string | boolean {
-    const passwordElement = document.getElementById("password") as HTMLInputElement;
+    const passwordElement = document.getElementById(
+      "password"
+    ) as HTMLInputElement;
     const password = passwordElement.value;
     return value === password || "Las contraseñas no coinciden";
   }
@@ -78,9 +80,11 @@ export default function SignUp() {
             </div>
             <span className="absolute bg-[#fff] top-1 px-3 flex gap-1">
               Already have an account?
-              <a href="" className="text-[#3B49DF]">
-                Log in.
-              </a>
+              <Link to={"/login"}>
+                <a href="" className="text-[#3B49DF]">
+                  Log in.
+                </a>
+              </Link>
             </span>
           </div>
           <form
@@ -106,7 +110,9 @@ export default function SignUp() {
                 },
               })}
             />
-            {errors.name && <p className="text-[#8e8e8e]">{errors.name.message}</p>}
+            {errors.name && (
+              <p className="text-[#8e8e8e]">{errors.name.message}</p>
+            )}
             <label
               className="font-normal text-md text-[#171717]"
               htmlFor="userImage"
@@ -127,7 +133,9 @@ export default function SignUp() {
                 },
               })}
             />
-            {errors.profilePicture && <p className="text-[#8e8e8e]">{errors.profilePicture.message}</p>}
+            {errors.profilePicture && (
+              <p className="text-[#8e8e8e]">{errors.profilePicture.message}</p>
+            )}
             <label
               className="font-normal text-md text-[#171717]"
               htmlFor="email"
@@ -148,7 +156,9 @@ export default function SignUp() {
                 },
               })}
             />
-            {errors.email && <p className="text-[#8e8e8e]">{errors.email.message}</p>}
+            {errors.email && (
+              <p className="text-[#8e8e8e]">{errors.email.message}</p>
+            )}
             <label
               className="font-normal text-md text-[#171717]"
               htmlFor="password"
@@ -169,7 +179,9 @@ export default function SignUp() {
                 },
               })}
             />
-            {errors.password && <p className="text-[#8e8e8e]">{errors.password.message}</p>}
+            {errors.password && (
+              <p className="text-[#8e8e8e]">{errors.password.message}</p>
+            )}
             <label
               className="font-normal text-md text-[#171717]"
               htmlFor="confirmPassword"
@@ -189,7 +201,9 @@ export default function SignUp() {
                 validate: passwordInputAndConfirmMatch,
               })}
             />
-            {errors.confirmPassword && <p className="text-[#8e8e8e]">{errors.confirmPassword.message}</p>}
+            {errors.confirmPassword && (
+              <p className="text-[#8e8e8e]">{errors.confirmPassword.message}</p>
+            )}
             <div className="bg-[#3B49DF] text-[#fff] h-12 flex items-center justify-center font-semibold rounded cursor-pointer">
               <input
                 id="submitData"

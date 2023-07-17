@@ -6,7 +6,7 @@ import { Props as ContentInfo } from "../components/CardPost"
 import AsideRight from "../components/AsideRight";
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
-export let postData ={}
+
 const cards:ContentInfo [] = [
     {
         image: 'https://res.cloudinary.com/practicaldev/image/fetch/s--F8vXLM34--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8i3shhdfjhswxr3dmfyb.jpeg',
@@ -41,7 +41,6 @@ export default function Home() {
       .then((res) => res.json())
       .then((res) => {
         setPosts(res.data); 
-        postData = res.data;
       })
       .catch(() => {
         toast.error("Error en el servidor");
@@ -61,9 +60,9 @@ export default function Home() {
         <section className="w-full md:w-3/4 lg:w-1/2">
           <nav className="flex justify-between">
             <ul className="flex flex-nowrap py-1">
-              <a className="py-2 px-4 text-[18px] text-[#121212] font-bold cursor-pointer" href="">Relevant</a>
-              <a className="py-2 px-4 text-[18px] text-[#575757] cursor-pointer" href="">Latest</a>
-              <a className="py-2 px-4 text-[18px] text-[#575757] cursor-pointer" href="">Top</a>
+              <a className="py-2 px-4 text-[18px] text-[#121212] font-bold cursor-pointer relative" href="">Relevant<span className="absolute inset-0 bg-black opacity-0 hover:opacity-10 rounded"></span></a>
+              <a className="py-2 px-4 text-[18px] text-[#575757] cursor-pointer relative" href="">Latest<span className="absolute inset-0 bg-black opacity-0 hover:opacity-10 rounded"></span></a>
+              <a className="py-2 px-4 text-[18px] text-[#575757] cursor-pointer relative" href="">Top<span className="absolute inset-0 bg-black opacity-0 hover:opacity-10 rounded"></span></a>
             </ul>
           </nav>
             {
