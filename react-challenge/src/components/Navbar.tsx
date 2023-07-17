@@ -68,8 +68,8 @@ export default function Navbar() {
               </button>
               {canvaIsOpen && (
                 <div  className="max-h-screen w-full">
-                  <div id="scrollable" className="fixed inset-0 w-full max-h-screen top-0 left-0 bg-[#000] opacity-70"></div>
-                  <div className="absolute top-0 left-0 w-[75%] bg-[#fff] opacity-100 z-10 overflow-y-scroll p-4 min-h-screen">
+                  <div id="scrollable" className="fixed inset-0 w-full max-h-screen top-0 left-0 bg-[#000] opacity-70 z-10"></div>
+                  <div className="absolute top-0 left-0 w-[75%] bg-[#fff] opacity-100 z-20 overflow-y-scroll p-4 min-h-screen">
                     <div className="flex justify-between items-center ps-2 mb-4">
                       <h2 className="text-[#303030] font-bold text-lg">
                         DEV Community

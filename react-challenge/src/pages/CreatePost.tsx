@@ -23,8 +23,9 @@ export default function CeratePost() {
   const [tagsCount, setTagsCount] = useState();
   const [tagsTo, setTags] = useState<Tags[]>([]);
   const [tag, setTag] = useState("");
+  const currentDate = new Date();
+  console.log(getRamdomInt(30));
 
-  
   const userToken = localStorage.getItem("token");
   const payload = userToken.split(".")[1];
   const idUser = JSON.parse(atob(payload)).id;
@@ -36,7 +37,7 @@ export default function CeratePost() {
       };
       setTags([tagInput, ...tagsTo]);
       console.log("tags", tagsTo);
-      setTag("")
+      setTag("");
     } else {
       alert("Falta llenar un campo");
     }
@@ -57,9 +58,19 @@ export default function CeratePost() {
     setTags([]);
   }
 
+  function getRamdomInt (max) { 
+   return Math.floor(Math.random() * max);
+  }
+  
   function onSubmit(data: ContentInfo) {
-    const myTags = tagsTo.map(item => item.tag)
-    const currentDate = new Date();
+    const myTags = tagsTo.map((item) => item.tag);
+    const heart = getRamdomInt(40);
+    const unicorn = getRamdomInt(50);
+    const crazy = getRamdomInt(40);
+    const hands = getRamdomInt(30);
+    const fire = getRamdomInt(45);
+    const marks = getRamdomInt(70);
+
     fetch("http://localhost:8080/post", {
       method: "POST",
       headers: {
@@ -74,18 +85,23 @@ export default function CeratePost() {
         time: data.time,
         tags: myTags,
         date: currentDate,
-        heartReactions: heartReactions,
+        heartReactions: heart,
+        unicornReactions: unicorn,
+        crazyReactions: crazy,
+        handsReactions: hands,
+        fireReactions: fire,
+        marks: marks
       }),
     })
       .then((response) => {
         setTimeout(() => {
-          // window.location.href = "/";
+          window.location.href = "/";
         }, 1000);
       })
       .catch((error) => {
         alert(error);
       });
-      empty()
+    empty();
   }
 
   return (
@@ -152,8 +168,10 @@ export default function CeratePost() {
                 placeholder="Paste an url image"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                onPaste={(e) =>
-                  setClipboardText(e.clipboardData.getData("text/plain"))
+                onPaste={(e) =>{
+                  setClipboardText(e.clipboardData.getData("text/plain"));
+                  setInputValue(clipboardText)
+                }
                 }
                 {...register("image")}
               />
@@ -187,7 +205,7 @@ export default function CeratePost() {
                 {...register("time")}
               />
             </div>
-            <div className="rounded-md w-full p-3 md:p-24 mt-[150px]">
+            <div className="rounded-md w-full p-3 md:p-24 mt-[260px] md:mt-[150px]">
               <button
                 className="rounded-md text-[#fff] text-lg font-normal bg-[#3B49E9] w-full md:w-36 py-2 mt-14 lg:ms-28 md:ms-14"
                 type="submit"
@@ -196,7 +214,7 @@ export default function CeratePost() {
               </button>
             </div>
           </form>
-          <div className="absolute flex flex-col  items-start md:items-center justify-start gap-3 mb-4 w-full ms-4 top-[66%] md:top-[52%] md:w-[80%] md:ms-[60px]">
+          <div className="absolute flex flex-col  items-start md:items-center justify-start gap-3 mb-4 w-full ms-4 top-[64%] md:top-[62%] md:w-[80%] md:ms-[60px]">
             <div className="w-full flex flex-col justify-start items-start md:flex-row md:items-center md:justify-center">
               <label
                 className="text-sm md:text-md lg:text-lg md:block md:w-[30%] text-[#151515]"
@@ -205,7 +223,7 @@ export default function CeratePost() {
                 Add tags:
               </label>
               <input
-              id="tag"
+                id="tag"
                 type="text"
                 className="rounded-md w-[70%] md:w-[65%] block"
                 placeholder="Tags..."
@@ -213,17 +231,32 @@ export default function CeratePost() {
                 onChange={(event) => setTag(event.target.value)}
                 value={tag}
               />
-              <button onClick={onAddItem} className="md:ms-4 bg-blue-800 w-[120px] h-[34px] mt-2 px-6 flex justify-center items-center text-[12px] text-[#ffff]">Add tag</button>
+              <button
+                onClick={onAddItem}
+                className="md:ms-4 bg-blue-800 w-[120px] h-[34px] mt-2 px-6 flex justify-center items-center text-[12px] text-[#ffff]"
+              >
+                Add tag
+              </button>
             </div>
-            <div className="border-2 w-[90%] h-[120px] border-[#9a9a9a] rounded-md overflow-y flex flex-wrap gap-4 px-6 py-4">
-            {tagsTo.map((tagToShow, index) => {
-          return (
-            <div key={`tag-${index}`} className="flex justify-center items-center gap-2 px-2 py-2 max-w-[100px] max-h-[34px] bg-blue-800 text-[#fff]">
-              <p className="block h-[18px] text-[14px] flex justify-center items-center">#{tagToShow.tag}</p>
-              <button onClick={() => onDelete(index)} className="block text-[2a2a2a] text-[20px] flex justify-center items-start cursor-pointer">x</button>
-            </div>
-          );
-        })}
+            <div className="border-2 w-[90%] h-[180px] border-[#9a9a9a] rounded-md overflow-y-scroll flex flex-wrap gap-4 px-6 py-4">
+              {tagsTo.map((tagToShow, index) => {
+                return (
+                  <div
+                    key={`tag-${index}`}
+                    className="flex justify-center items-center gap-2 px-2 py-2 max-w-[150px] max-h-[40px] bg-blue-800 text-[#fff] border-2 border-[#4d3701]"
+                  >
+                    <p className="block h-[18px] text-[14px] flex justify-center items-center">
+                      # {tagToShow.tag}
+                    </p>
+                    <button
+                      onClick={() => onDelete(index)}
+                      className="block text-[2a2a2a] text-[20px] font-bold flex justify-center items-start cursor-pointer"
+                    >
+                      x
+                    </button>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
