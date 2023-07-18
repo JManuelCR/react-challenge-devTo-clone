@@ -17,7 +17,7 @@ export default function AsideLeftCard(props: Props) {
   const cardContent = props.content;
 
   return (
-    <article className="w-full p-3 pb-4 rounded-md bg-[white] max-h-[1082px] mb-3">
+    <article className="w-full p-3 pb-4 rounded-md bg-[white] max-h-[1082px] mb-3 cursor-pointer">
       <header className="flex p-2 justify-between items-center">
         <p className="text-[14px]">DEV Community</p>
         <span className="rounded w-6 h-auto">

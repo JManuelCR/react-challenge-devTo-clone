@@ -6,12 +6,15 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import CanvaAsideLeft from "./CanvaAsideLeft";
 import Close from "../assets/icons/x-Close-Icon.svg";
+import { ToastContainer, toast } from "react-toastify";
 
 const token = localStorage.getItem("token");
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [canvaIsOpen, setCanvaIsOpen] = useState(false);
+  const [userToShow, setUser] = useState([])
+  const userEmail = localStorage.getItem("email");
 
   function logOut() {
     localStorage.removeItem("token");
@@ -49,6 +52,17 @@ export default function Navbar() {
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    fetch(`http://localhost:8080/name/${userEmail}`)
+    .then(res => res.json())
+    .then(res => {
+      setUser(res.data);
+    })
+    .catch(( ) => {
+      toast.error("No hay datos de usuario")
+    })
+  })
+  console.log(userToShow);
   return (
     <>
       <nav className="w-full h-[56px] bg-[#fff] flex items-center">
@@ -68,8 +82,8 @@ export default function Navbar() {
               </button>
               {canvaIsOpen && (
                 <div  className="max-h-screen w-full">
-                  <div id="scrollable" className="fixed inset-0 w-full max-h-screen top-0 left-0 bg-[#000] opacity-70"></div>
-                  <div className="absolute top-0 left-0 w-[75%] bg-[#fff] opacity-100 z-10 overflow-y-scroll p-4 min-h-screen">
+                  <div id="scrollable" className="fixed inset-0 w-full max-h-screen top-0 left-0 bg-[#000] opacity-70 z-10"></div>
+                  <div className="absolute top-0 left-0 w-[75%] bg-[#fff] opacity-100 z-20 overflow-y-scroll p-4 min-h-screen">
                     <div className="flex justify-between items-center ps-2 mb-4">
                       <h2 className="text-[#303030] font-bold text-lg">
                         DEV Community
@@ -104,12 +118,15 @@ export default function Navbar() {
                         type="text"
                         placeholder="Search..."
                       />
-                      <button className="left-[92%] right-[0.5%] top-[22%] absolute">
+                      <button className="left-[91%] right-[0.5%] top-[3%] absolute">
+                        <div className="relative w-[38px] h-[38px] rounded-md flex justify-center items-center">
+                        <span className="absolute inset-0 bg-black opacity-0 hover:opacity-10 rounded"></span>
                         <img
                           className="w-[24px] h-[24px]"
                           src={searchLoupe}
                           alt="search icon"
                         />
+                        </div>
                       </button>
                     </div>
                   </div>
@@ -117,8 +134,10 @@ export default function Navbar() {
               </div>
             </div>
           </div>
+          <ToastContainer />
           <div className="flex items-center ms-[18px] lg:ms-259px lasContainerNav me-4 md:me-0">
-            <a className="md:hidden me-2" href="">
+            <a className="md:hidden me-2 relative" href="">
+            <span className="absolute inset-0 bg-black opacity-0 hover:opacity-10 rounded"></span>
               <img
                 className="w-[28px] h-[28px]"
                 src={searchLoupe}
@@ -129,7 +148,7 @@ export default function Navbar() {
               <div className="flex items-center justify-center gap-3">
                 <Link to={"/create"}>
                   <a
-                    className="text-[#3B49E9] relative hidden md:block flex py-[7px] px-[15px] text-8 font-normal border-[#3B49E9] border-[1px] rounded-md"
+                    className="text-[#3B49E9] relative hidden md:block flex py-[7px] px-[15px] text-8 font-normal border-[#3B49E9] border-[1px] rounded-md hover:bg-[#3B49E9] hover:text-[#fff]"
                     href=""
                   >
                     Create post
@@ -143,7 +162,7 @@ export default function Navbar() {
                     <span className="">
                       <img
                         className="w-8 h-8 rounded-full"
-                        src="https://avatars.githubusercontent.com/u/45635600?v=4"
+                        src={userToShow.profilePicture}
                         alt="User profile image"
                       />
                     </span>
@@ -155,7 +174,7 @@ export default function Navbar() {
                           <a className="py-2 px-4 block" href="">
                             <div className="w-full">
                               <span className="text-[#404040] font-bold text-base">
-                                Manuel Cabrera
+                                {userToShow.name}
                               </span>
                               <span className=""></span>
                             </div>
@@ -214,13 +233,13 @@ export default function Navbar() {
               <div className="flex ms-2">
                 <Link to={"/login"}>
                   {}
-                  <span className="block leading-6 px-4 py-2 me-2 relative text-[#404040] text-8 font-normal hidden md:block">
-                    <a href="">Log in</a>
+                  <span className="block leading-6 px-4 py-2 me-2 relative text-[#404040] text-8 font-normal hidden md:block hover:decoration-1">
+                    <a className="hover:decoration-1 hover:text-blue-800 hover:underline" href="">Log in <span className="absolute inset-0 bg-[#3B49DF] opacity-0 hover:opacity-10 rounded-md"></span></a>
                   </span>
                 </Link>
                 <Link to={"/signup"}>
                   <a
-                    className="text-[#3B49E9] relative flex py-[7px] px-[15px] text-8 font-normal border-[#3B49E9] border-[0.65px]"
+                    className="text-[#3B49E9] relative flex py-[7px] px-[15px] text-8 font-normal border-[#3B49E9] border-[1px] hover:bg-[#3B49E9] hover:text-[#fff] rounded-md"
                     href=""
                   >
                     Create account

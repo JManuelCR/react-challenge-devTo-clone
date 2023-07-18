@@ -30,6 +30,7 @@ export default function Login() {
       .then((res) => {
         if (res?.data) {
           localStorage.setItem("token", res.data);
+          localStorage.setItem("email", data.email)
           setTimeout(() =>{
             window.location.href = '/'
           },500)
