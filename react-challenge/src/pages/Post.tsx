@@ -217,7 +217,7 @@ console.log(post);
           <header className="flex justify-start items-end absolute top-[-16px]">
             <span className="rounded-full w-auto h-auto block mr-[8px]">
               <img
-                className="w-12 h-12 rounded-full  h-auto"
+                className="w-12 h-12 rounded-full"
                 src={user.profilePicture}
                 alt="Card image"
               />
